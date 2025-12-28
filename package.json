@@ -1,0 +1,22 @@
+{
+    "name": "@projectyoked/react-native-media-engine",
+    "version": "0.1.0",
+    "description": "Expo native module for video composition with text/emoji overlays, audio extraction, and waveform generation",
+    "main": "src/index.js",
+    "license": "MIT",
+    "author": "ProjectYoked",
+    "homepage": "https://github.com/projectyoked/react-native-media-engine",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/projectyoked/react-native-media-engine.git"
+    },
+    "keywords": [
+        "react-native",
+        "expo",
+        "video",
+        "composition",
+        "media",
+        "audio",
+        "waveform"
+    ]
+}

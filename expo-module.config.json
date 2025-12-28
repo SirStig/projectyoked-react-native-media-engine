@@ -1,0 +1,17 @@
+{
+    "name": "MediaEngine",
+    "platforms": [
+        "ios",
+        "android"
+    ],
+    "ios": {
+        "modules": [
+            "MediaEngineModule"
+        ]
+    },
+    "android": {
+        "modules": [
+            "com.projectyoked.mediaengine.MediaEngineModule"
+        ]
+    }
+}
