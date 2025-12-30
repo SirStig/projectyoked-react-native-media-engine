@@ -1,6 +1,12 @@
-# @projectyoked/react-native-media-engine
+# @projectyoked/expo-media-engine
 
-Expo native module for video composition with text/emoji overlays, audio extraction, and waveform generation. Built for high-performance video editing in React Native applications.
+[![npm version](https://badge.fury.io/js/@projectyoked%2Fexpo-media-engine.svg)](https://badge.fury.io/js/@projectyoked%2Fexpo-media-engine)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/SirStig/projectyoked-expo-media-engine/workflows/CI/badge.svg)](https://github.com/SirStig/projectyoked-expo-media-engine/actions)
+[![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-lightgrey)](https://github.com/SirStig/projectyoked-expo-media-engine)
+[![Expo](https://img.shields.io/badge/Expo-49%2B-blue.svg)](https://expo.dev)
+
+**Professional video composition and editing for Expo apps.** Built with the Expo Modules API for high-performance native video processing with text/emoji overlays, audio extraction, and waveform generation.
 
 ## Features
 
@@ -11,49 +17,64 @@ Expo native module for video composition with text/emoji overlays, audio extract
 - **Emoji Overlays**: Add timed emoji overlays with custom sizes and positioning
 - **Audio Mixing**: Mix original video audio with background music at custom volumes
 - **Hardware Accelerated**: Uses native APIs (AVFoundation on iOS, MediaCodec on Android)
+- **Built for Expo**: Native Expo module with full TypeScript support
 
 ## Installation
 
 ```bash
-npm install @projectyoked/react-native-media-engine
+npm install @projectyoked/expo-media-engine
 ```
 
 or
 
 ```bash
-yarn add @projectyoked/react-native-media-engine
+yarn add @projectyoked/expo-media-engine
 ```
+
+### Setup
+
+After installation, rebuild your Expo app:
+
+```bash
+npx expo prebuild
+npx expo run:ios    # or run:android
+```
+
+> **Note**: This is an **Expo module** built with the Expo Modules API. It requires Expo SDK 49+ and will work in any Expo project (managed or bare workflow).
 
 ### iOS
 
-After installation, run:
+For iOS-specific setup after prebuild:
 
 ```bash
-npx expo prebuild --platform ios --clean
 cd ios && pod install
 ```
 
 ### Android  
 
-After installation, run:
-
-```bash
-npx expo prebuild --platform android --clean
-```
+After prebuild, Android should be ready to run.
 
 ## Requirements
 
-- Expo SDK 54+
-- React Native 0.81+
+- **Expo SDK** 49+
+- **expo-modules-core** >= 1.0.0  
+- React Native 0.64+
+- React 16.13+
 - iOS 13.4+
-- Android SDK 26+
+- Android SDK 21+ (API level 21)
+
+**Compatible with:**
+- ✅ Expo managed workflow
+- ✅ Expo bare workflow (after `npx expo prebuild`)
+- ✅ Development builds
+- ✅ EAS Build
 
 ## Usage
 
 ### Check Module Availability
 
 ```javascript
-import MediaEngine from '@projectyoked/react-native-media-engine';
+import MediaEngine from '@projectyoked/expo-media-engine';
 
 if (MediaEngine.isAvailable()) {
   // Module is loaded and ready
@@ -192,6 +213,60 @@ Checks if the native module is properly loaded.
 - Text/emoji overlays are burned directly into the video
 - Typical processing speed: ~1x realtime (10 second video in ~10 seconds)
 
+## Development & Testing
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run linting
+npm run lint
+
+# Run TypeScript type checking
+npm run typecheck
+
+# Run all validation checks
+npm run validate
+```
+
+### Building for Development
+
+This is a native module, so no JavaScript build step is required. For testing in a real app:
+
+**Expo Project:**
+```bash
+npx expo prebuild
+npx expo run:ios    # or run:android
+```
+
+**Bare React Native:**
+```bash
+npx pod-install     # iOS
+# Android auto-links
+```
+
+### TypeScript Support
+
+This package includes TypeScript definitions. Import with full type safety:
+
+```typescript
+import MediaEngine, { ExportCompositionConfig } from '@projectyoked/expo-media-engine';
+
+const config: ExportCompositionConfig = {
+  videoPath: '/path/to/video.mp4',
+  outputPath: '/path/to/output.mp4',
+  // ... TypeScript will autocomplete and validate all options
+};
+```
+
 ## Error Handling
 
 ```javascript
@@ -210,12 +285,38 @@ Common errors:
 
 ## License
 
-MIT
+MIT © [ProjectYoked](https://github.com/SirStig/projectyoked-expo-media-engine)
 
-## Author
-
-ProjectYoked
+See [LICENSE](LICENSE) for more information.
 
 ## Contributing
 
-https://github.com/SirStig/projectyoked-react-native-media-engine
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## Security
+
+For security issues, please see our [Security Policy](SECURITY.md).
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.
+
+## Links
+
+- [npm Package](https://www.npmjs.com/package/@projectyoked/expo-media-engine)
+- [GitHub Repository](https://github.com/SirStig/projectyoked-expo-media-engine)
+- [Issues](https://github.com/SirStig/projectyoked-expo-media-engine/issues)
+- [Pull Requests](https://github.com/SirStig/projectyoked-expo-media-engine/pulls)
+- [Expo Documentation](https://docs.expo.dev)
+
+## Support
+
+If you like this project, please consider:
+- ⭐ Starring the repository
+- 🐛 Reporting bugs
+- 💡 Suggesting new features
+- 🤝 Contributing code
+
+---
+
+Made with ❤️ by ProjectYoked | Built with Expo Modules API

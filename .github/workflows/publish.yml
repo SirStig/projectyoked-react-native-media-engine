@@ -1,0 +1,47 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      id-token: write
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          registry-url: 'https://registry.npmjs.org'
+      
+      - name: Install dependencies
+        run: npm install
+      
+      - name: Validate package
+        run: |
+          npm run build
+          test -f src/index.d.ts && echo "✓ TypeScript definitions found"
+          test -f README.md && echo "✓ README.md found"
+          test -f LICENSE && echo "✓ LICENSE found"
+      
+      - name: Publish to npm
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      
+      - name: Create release summary
+        run: |
+          echo "## 📦 Published to npm" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Package: @projectyoked/react-native-media-engine" >> $GITHUB_STEP_SUMMARY
+          echo "Version: $(node -p "require('./package.json').version")" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Install with:" >> $GITHUB_STEP_SUMMARY
+          echo "\`npm install @projectyoked/react-native-media-engine\`" >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# OSX
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Android
+android/build/
+android/.gradle/
+android/local.properties
+*.iml
+.gradle/
+local.properties
+
+# iOS
+ios/build/
+ios/Pods/
+*.xcworkspace
+!default.xcworkspace
+xcuserdata/
+*.xcscmblueprint
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Expo
+.expo/
+.expo-shared/
+dist/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.log
+.cache/
